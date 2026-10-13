@@ -1,0 +1,19 @@
+[
+{
+  "modid": "disfire",
+  "name": "DisFire",
+  "description": "Убирает огонь с экрана и показывает оранжевый индикатор Fire, пока игрок горит.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Zaryadka432"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "parent": "",
+  "dependencies": [],
+  "requiredMods": [],
+  "optionalMods": []
+}
+]
