@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
+        classpath 'com.github.xcfrg:MixinGradle:0.6-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -36,7 +36,7 @@ dependencies {
         exclude module: 'commons-io'
         exclude module: 'log4j-core'
     }
-    annotationProcessor 'org.spongepowered:mixin:0.7.11-SNAPSHOT:processor'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 mixin {
