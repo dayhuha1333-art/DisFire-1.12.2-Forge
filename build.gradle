@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        maven { url = "https://maven.minecraftforge.net" }
+        maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'org.spongepowered.mixin'
+
+version = "1.0.0"
+group = "com.example.disfire"
+archivesBaseName = "DisFire"
+
+sourceCompatibility = targetCompatibility = '1.8'
+
+minecraft {
+    version = "1.12.2-14.23.5.2847"
+    runDir = "run"
+    mappings = "snapshot_20171003"
+}
+
+repositories {
+    maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
+}
+
+dependencies {
+    compile('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
+        exclude module: 'launchwrapper'
+        exclude module: 'guava'
+        exclude module: 'gson'
+        exclude module: 'commons-io'
+        exclude module: 'log4j-core'
+    }
+    annotationProcessor 'org.spongepowered:mixin:0.7.11-SNAPSHOT:processor'
+}
+
+mixin {
+    add sourceSets.main, 'mixins.disfire.refmap.json'
+}
+
+jar {
+    manifest {
+        attributes(
+            'MixinConfigs': 'mixins.disfire.json',
+            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+            'TweakOrder': '0',
+            'FMLCorePlugin': 'com.example.disfire.DisFireLoadingPlugin',
+            'ForceLoadAsMod': 'true'
+        )
+    }
+}
